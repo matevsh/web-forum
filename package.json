@@ -1,0 +1,28 @@
+{
+  "name": "web-forum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matevsh/web-forum.git"
+  },
+  "keywords": [
+    "forum"
+  ],
+  "author": "@matevsh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matevsh/web-forum/issues"
+  },
+  "homepage": "https://github.com/matevsh/web-forum#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint": "^8.25.0",
+    "eslint-plugin-react": "^7.31.10"
+  }
+}
