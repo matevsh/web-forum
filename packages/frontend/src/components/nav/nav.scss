@@ -1,0 +1,30 @@
+.main-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  min-width: 4rem;
+  text-align: center;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  transition: .2s;
+  border: 5px solid transparent;
+
+  &:hover, &:active {
+    background: #e0e0e0;
+  }
+}
+
+.nav-link.active {
+  border-bottom: 5px solid #6a9eff;
+  border-radius: 0;
+
+  &:hover, &:active {
+    background: #9abdff;
+    border-radius: 0.3rem;
+  }
+}

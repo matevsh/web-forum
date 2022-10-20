@@ -1,22 +1,28 @@
 import { NavLink } from 'react-router-dom';
-
-const linkStyle = {
-    marginRight: '1rem',
-    textDecoration: 'none'
-};
+import './nav.scss';
 
 const Nav = () => {
+    const user = false;
+
     return (
-        <nav>
-            <NavLink end={true} style={linkStyle} to={'/'}>
+        <nav className='main-nav'>
+            <NavLink end={true} className='nav-link' to={'/'}>
                 home
             </NavLink>
-            <NavLink style={linkStyle} to={'profile'}>
+            <NavLink className='nav-link' to={'profile'}>
                 profile
             </NavLink>
-            <NavLink style={linkStyle} to={'threads'}>
+            <NavLink className='nav-link' to={'threads'}>
                 thread
             </NavLink>
+            { user
+                ? <NavLink className='nav-link' to={'logout'}>
+                logout
+                </NavLink>
+                : <NavLink className='nav-link' to={'auth'}>
+                auth
+                </NavLink>
+            }
         </nav>
     );
 };
