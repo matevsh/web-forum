@@ -9,7 +9,7 @@ export const getThread = (req: Request, res: Response) => {
     const {threadId} = req.params;
 
     try{
-        const wanted = data.filter(t => t.id === +threadId);
+        const [wanted] = data.filter(t => t.id === +threadId);
         if(!wanted) throw new Error('invalid thread Id');
 
         res.status(200).json(wanted);
