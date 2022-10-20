@@ -1,10 +1,9 @@
 import { Router } from 'express';
-import data from './mock.data';
+import {getThreads, getThread} from './controller';
 
 const providerRouter = Router();
 
-providerRouter.get('/', (req, res) => {
-    res.status(200).json(data);
-});
+providerRouter.get('/', getThreads);
+providerRouter.get('/:threadId', getThread);
 
 export default providerRouter;
