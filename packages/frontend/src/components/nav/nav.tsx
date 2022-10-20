@@ -14,7 +14,7 @@ const Nav = () => {
             <NavLink style={linkStyle} to={'profile'}>
                 profile
             </NavLink>
-            <NavLink style={linkStyle} to={'thread'}>
+            <NavLink style={linkStyle} to={'threads'}>
                 thread
             </NavLink>
         </nav>

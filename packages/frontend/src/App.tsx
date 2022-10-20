@@ -1,10 +1,11 @@
 import { RouterProvider, createBrowserRouter} from 'react-router-dom';
 import Root from './pages/root';
-import Home from './components/home';
-import Profile from './components/profile';
-import Thread from './components/threads';
+import Home from './pages/home';
+import Profile from './pages/profile';
+import Threads from './pages/threads';
+import Thread from './pages/threadPage';
 import threadsLoader from './loaders/home.loader';
-import './public.css';
+import './public.scss';
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,11 @@ const router = createBrowserRouter([
                 element: <Profile />
             },
             {
-                path: 'thread',
+                path: 'threads',
+                element: <Threads />
+            },
+            {
+                path: 'thread/:threadId',
                 element: <Thread />
             }
         ]
@@ -29,7 +34,11 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-    return <RouterProvider router={router} />;
+    return (
+        <div id="container">
+            <RouterProvider router={router} />
+        </div>
+    );
 };
 
 export default App;

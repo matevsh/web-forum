@@ -1,15 +1,16 @@
 import {useLoaderData} from 'react-router-dom';
 import {thread} from '../../types/thread';
-import Thread from './thread/thread';
+import Thread from '../components/thread/thread';
 
 const Home = () => {
     const data = useLoaderData() as Array<thread>;
+
+    if(!data) return <h1>Data loading internal error</h1>;
+
     return (
         <>
-            <h1>This is Home page</h1>
-            <p>Yes is definitely home page</p>
-            {data.map(({id, title, views} : thread) => (
-                <Thread key={id} title={title} views={views} />
+            {data?.map(({id, title, views} : thread) => (
+                <Thread key={id} id={id} title={title} views={views} />
             ))}
         </>
     );

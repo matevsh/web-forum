@@ -1,0 +1,21 @@
+.thread-card__link{
+    text-decoration: none;
+    color: black;
+}
+
+.thread-card__content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: aquamarine;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: .5rem;
+    min-height: 125px;
+    cursor: pointer;
+}
+
+.thread-card__info{
+    display: flex;
+    gap: 1rem;
+}
