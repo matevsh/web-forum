@@ -6,6 +6,7 @@ import Threads from './pages/threads';
 import Thread from './pages/threadPage';
 import threadsLoader from './loaders/home.loader';
 import './public.scss';
+import threadLoader from './loaders/thread.loader';
 
 const router = createBrowserRouter([
     {
@@ -27,7 +28,8 @@ const router = createBrowserRouter([
             },
             {
                 path: 'thread/:threadId',
-                element: <Thread />
+                element: <Thread />,
+                loader: threadLoader
             }
         ]
     }
