@@ -1,0 +1,22 @@
+.auth-nav{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.auth-link{
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  border: 5px solid transparent;
+  padding: .3rem .5rem;
+
+  &:hover{
+    color: #494949;
+  }
+}
+
+.auth-link.active{
+  border-bottom: 5px solid #6a9eff;
+}

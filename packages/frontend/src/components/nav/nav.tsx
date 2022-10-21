@@ -4,7 +4,7 @@ import NavLogin from './auth/login';
 import './nav.scss';
 
 const Nav = () => {
-    const user = true;
+    const user = false;
 
     return (
         <nav className='main-nav'>
