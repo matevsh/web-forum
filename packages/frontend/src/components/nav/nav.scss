@@ -4,6 +4,7 @@
 }
 
 .nav-link {
+  display: block;
   text-decoration: none;
   color: black;
   font-weight: bold;
@@ -16,6 +17,23 @@
 
   &:hover, &:active {
     background: #e0e0e0;
+    animation: hover 1s .5s infinite;
+  }
+
+  &--marked {
+    background: #6a9eff;
+  }
+}
+
+@keyframes hover {
+  0%{
+    transform: rotateX(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100%{
+    transform: rotateX(0);
   }
 }
 

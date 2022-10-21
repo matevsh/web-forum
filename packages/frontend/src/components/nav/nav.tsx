@@ -1,28 +1,17 @@
 import { NavLink } from 'react-router-dom';
+import NavLogout from './auth/logout';
+import NavLogin from './auth/login';
 import './nav.scss';
 
 const Nav = () => {
-    const user = false;
+    const user = true;
 
     return (
         <nav className='main-nav'>
             <NavLink end={true} className='nav-link' to={'/'}>
                 home
             </NavLink>
-            <NavLink className='nav-link' to={'profile'}>
-                profile
-            </NavLink>
-            <NavLink className='nav-link' to={'threads'}>
-                thread
-            </NavLink>
-            { user
-                ? <NavLink className='nav-link' to={'logout'}>
-                logout
-                </NavLink>
-                : <NavLink className='nav-link' to={'auth'}>
-                auth
-                </NavLink>
-            }
+            {user ? <NavLogin /> : <NavLogout />}
         </nav>
     );
 };

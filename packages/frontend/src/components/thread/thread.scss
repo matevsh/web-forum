@@ -6,16 +6,31 @@
 .thread-card__content{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    background: aquamarine;
+    justify-content: center;
+    background: #eeeeee;
+    box-shadow: 0 0 3px 3px #eeeeee;
     margin: 1rem 0;
-    padding: 1rem;
+    padding: 2rem 1rem;
     border-radius: .5rem;
     min-height: 125px;
     cursor: pointer;
+    position: relative;
+    transition: .3s;
+
+    &:hover {
+        background: #dedede;
+        box-shadow: 0 0 3px 3px #dedede;
+    }
 }
 
 .thread-card__info{
     display: flex;
     gap: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: .5rem 1rem;
+    font-weight: bold;
+    color: #6b6b6b;
 }

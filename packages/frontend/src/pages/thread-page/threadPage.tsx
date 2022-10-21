@@ -1,5 +1,5 @@
 import {useLoaderData} from 'react-router-dom';
-import {thread} from '../../types/thread';
+import {thread} from '../../../types/thread';
 
 const mainStyles = {
     paddingTop: '2rem',

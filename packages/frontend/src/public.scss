@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+.main-content{
+    min-height: 200vh;
+    width: 100%;
+}
+
 #container{
     width: 100%;
     margin-inline: auto;

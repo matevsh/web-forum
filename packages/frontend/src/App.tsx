@@ -1,9 +1,9 @@
 import { RouterProvider, createBrowserRouter} from 'react-router-dom';
 import Root from './pages/root';
-import Home from './pages/home';
-import Profile from './pages/profile';
+import Home from './pages/home/home';
+import Profile from './pages/profil/profile';
 import Threads from './pages/threads';
-import Thread from './pages/threadPage';
+import Thread from './pages/thread-page/threadPage';
 import threadsLoader from './loaders/home.loader';
 import './public.scss';
 import threadLoader from './loaders/thread.loader';
