@@ -25,5 +25,9 @@
     "eslint": "^8.25.0",
     "eslint-plugin-react": "^7.31.10",
     "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@types/cookie-parser": "^1.4.3",
+    "@types/express-session": "^1.17.5"
   }
 }
