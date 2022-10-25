@@ -12,6 +12,7 @@ const app = express();
 app.use(cors({ origin: '*' }));
 
 app.use(cookieParser());
+app.use(express.json());
 
 const cookieMonth = 1000* 60* 60* 24* 30;
 const {SECRET} = process.env;
