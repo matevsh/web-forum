@@ -15,16 +15,19 @@ const loginUser = (req: Request, res: Response) => {
 
         if(user.password !== password) throw new Error('Invalid password');
 
-        req.session.user = {
+        const loggedUser = {
             id: user.id,
             login: user.login
         };
+
+        req.session.user = loggedUser;
 
         res.status(200).json({
             ok: true,
             error: false,
             success: true,
-            msg: 'Zostałeś pomyślnie zalogowany'
+            msg: 'Zostałeś pomyślnie zalogowany',
+            user: loggedUser
         });
     } catch (e) {
         res.json({

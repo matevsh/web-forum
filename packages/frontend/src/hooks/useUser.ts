@@ -1,25 +1,33 @@
 import axios from 'axios';
-import {user, userRegister, authResponse} from '../../types/auth';
-import {FormEvent} from 'react';
+import {userLogin, authResponse} from '../../types/auth';
+import {FormEvent, useEffect, useState} from 'react';
+import {user} from '../../types/auth';
 
 const AUTH_URL = 'http://localhost:3000/api/auth';
 
 const useUser = () => {
-    const postAuth = async (url: string, user: user) => {
+    const [user, setUser] = useState<user | null>(null);
+
+    useEffect(()=>{
+        console.log(user);
+    }, [user]);
+
+    const postAuth = async (url: string, user: userLogin) => {
         const {status, data} = await axios.post<authResponse>(url, user);
         if(status !== 200) throw new Error(`Bad request ${status}`);
         return data;
     };
 
     return {
-        login: async (e:FormEvent<HTMLFormElement>,user: user) => {
+        user: user,
+        login: async (e:FormEvent<HTMLFormElement>,user: userLogin) => {
             e.preventDefault();
 
-            return await postAuth(`${AUTH_URL}/login`, user);
-        },
-        // register: async (user: userRegister) => {
-        //
-        // }
+            const response = await postAuth(`${AUTH_URL}/login`, user);
+            setUser(response.user);
+
+            return response;
+        }
     };
 };
 
