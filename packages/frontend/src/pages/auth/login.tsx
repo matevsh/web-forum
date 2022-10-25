@@ -1,11 +1,12 @@
 import Form from './form/form';
-import React from 'react';
-import useUser from '../../hooks/useUser';
+import React, {useContext} from 'react';
 import useAlert from '../../hooks/useAlert';
 import Alert from './alert/alert';
+import {UserContext} from '../../context/userProvider';
 
 const Login = () => {
-    const {login} = useUser();
+    const context = useContext(UserContext);
+    if(!context) return <p>invalid</p>;
     const {alert, showAlert, hideAlert} = useAlert();
 
     return (
@@ -20,7 +21,7 @@ const Login = () => {
                 <p>Witamy ponownie</p>
             </header>
             <main>
-                <Form onSubmit={login} showAlert={showAlert}/>
+                <Form onSubmit={context.login} showAlert={showAlert}/>
             </main>
         </div>
     );
