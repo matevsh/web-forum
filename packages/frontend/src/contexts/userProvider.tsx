@@ -10,7 +10,7 @@ export const UserContext = createContext<userContext | null>(null);
 type childrenProp = { children: ReactNode }
 
 const UserProvider = ({children}: childrenProp) => {
-    const {user, login, resume} = useUser();
+    const {user, login, resume, logout} = useUser();
     const data = useLoaderData() as user;
 
     useEffect(()=>{
@@ -18,7 +18,7 @@ const UserProvider = ({children}: childrenProp) => {
     },[]);
 
     return(
-        <UserContext.Provider value={{user, login}}>
+        <UserContext.Provider value={{user, login, logout}}>
             {children}
         </UserContext.Provider>
     );

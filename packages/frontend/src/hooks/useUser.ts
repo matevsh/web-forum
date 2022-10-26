@@ -15,6 +15,10 @@ const useUser = () => {
         return data;
     };
 
+    const logout = async (url: string) => {
+        await axios.get(url, {withCredentials: true});
+    };
+
     return {
         user: user,
         login: async (e:FormEvent<HTMLFormElement>,user: userLogin) => {
@@ -27,6 +31,10 @@ const useUser = () => {
         },
         resume: (user: user) => {
             setUser(user);
+        },
+        logout: async () => {
+            setUser(null);
+            await logout(`${AUTH_URL}/logout`);
         }
     };
 };
