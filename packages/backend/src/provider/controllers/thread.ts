@@ -1,4 +1,4 @@
-import data from './mock.data';
+import data from '../mock.data';
 import {Request, Response} from 'express';
 
 export const getThreads = (req: Request, res: Response) => {
