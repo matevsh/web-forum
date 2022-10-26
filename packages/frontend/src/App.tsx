@@ -9,11 +9,13 @@ import threadLoader from './loaders/thread.loader';
 import Auth from './pages/auth/auth';
 import Login from './pages/auth/login';
 import Register from './pages/auth/register';
+import sessionLoader from './loaders/session.loader';
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Root />,
+        loader: sessionLoader,
         children: [
             {
                 index: true,

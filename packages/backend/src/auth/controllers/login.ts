@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import users from './mock.data';
+import users from '../mock.data';
 
 const findUser = (login: string) => {
     const userIndex = users.map(x => x.login).indexOf(login);
@@ -21,18 +21,14 @@ const loginUser = (req: Request, res: Response) => {
         };
 
         req.session.user = loggedUser;
-
         res.status(200).json({
-            ok: true,
-            error: false,
+            user: loggedUser,
             success: true,
-            msg: 'Zostałeś pomyślnie zalogowany',
-            user: loggedUser
+            msg: 'Zostałeś pomyślnie zalogowany'
         });
     } catch (e) {
-        res.json({
-            ok: true,
-            error: true,
+        res.status(400).json({
+            user: null,
             success: false,
             msg: e
         });
@@ -40,10 +36,3 @@ const loginUser = (req: Request, res: Response) => {
 };
 
 export default loginUser;
-
-// export type authResponse = {
-//     ok: boolean
-//     error: boolean
-//     success: boolean
-//     msg: string
-// }

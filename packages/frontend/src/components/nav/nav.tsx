@@ -2,16 +2,19 @@ import { NavLink } from 'react-router-dom';
 import NavLogout from './auth/logout';
 import NavLogin from './auth/login';
 import './nav.scss';
+import {useContext} from 'react';
+import {UserContext} from '../../contexts/userProvider';
+import {userContext} from '../../../types/user';
 
 const Nav = () => {
-    const user = false;
+    const userContext = useContext<userContext | null>(UserContext);
 
     return (
         <nav className='main-nav'>
             <NavLink end={true} className='nav-link' to={'/'}>
                 home
             </NavLink>
-            {user ? <NavLogin /> : <NavLogout />}
+            {userContext?.user ? <NavLogin /> : <NavLogout />}
         </nav>
     );
 };

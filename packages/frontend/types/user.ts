@@ -1,12 +1,7 @@
-import {loginFun} from './auth';
-import {ReactNode} from 'react';
-import {user} from './auth';
+import {loginHandle} from './auth';
+import {user} from '../../common/user/user';
 
 export interface userContext {
-    user: user
-    login: loginFun
-}
-
-export interface userContextProps extends userContext{
-    children?: ReactNode
+    user: user | null
+    login: loginHandle
 }

@@ -1,19 +1,16 @@
 import axios from 'axios';
-import {userLogin, authResponse} from '../../types/auth';
-import {FormEvent, useEffect, useState} from 'react';
-import {user} from '../../types/auth';
+import {userLogin} from '../../types/auth';
+import {authResponse} from '../../../common/auth/auth';
+import {FormEvent, useState} from 'react';
+import {user} from '../../../common/user/user';
 
 const AUTH_URL = 'http://localhost:3000/api/auth';
 
 const useUser = () => {
     const [user, setUser] = useState<user | null>(null);
 
-    useEffect(()=>{
-        console.log(user);
-    }, [user]);
-
     const postAuth = async (url: string, user: userLogin) => {
-        const {status, data} = await axios.post<authResponse>(url, user);
+        const {status, data} = await axios.post<authResponse>(url, user, {withCredentials: true});
         if(status !== 200) throw new Error(`Bad request ${status}`);
         return data;
     };
@@ -27,6 +24,9 @@ const useUser = () => {
             setUser(response.user);
 
             return response;
+        },
+        resume: (user: user) => {
+            setUser(user);
         }
     };
 };

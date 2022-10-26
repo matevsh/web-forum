@@ -6,6 +6,9 @@ const NavLogin= () => {
             <NavLink className='nav-link' to={'profil'}>
                 profil
             </NavLink>
+            <NavLink className='nav-link' to={'wyloguj'}>
+                wyloguj
+            </NavLink>
         </>
     );
 };
