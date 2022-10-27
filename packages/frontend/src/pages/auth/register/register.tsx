@@ -1,10 +1,10 @@
-import Form from './form/form';
+import Form from './form';
 import React, {useContext} from 'react';
-import useAlert from '../../hooks/useAlert';
-import Alert from './alert/alert';
-import {UserContext} from '../../contexts/userProvider';
+import useAlert from '../../../hooks/useAlert';
+import Alert from '../alert/alert';
+import {UserContext} from '../../../contexts/userProvider';
 
-const Login = () => {
+const Register = () => {
     const context = useContext(UserContext);
     if(!context) return <p>invalid context</p>;
     const {alert, showAlert, hideAlert} = useAlert();
@@ -17,14 +17,14 @@ const Login = () => {
                 hideAlert={hideAlert}
             />}
             <header>
-                <h1>Logowanie</h1>
-                <p>Witamy ponownie</p>
+                <h1>Rejestracja</h1>
+                <p>Stwórz swoje konto</p>
             </header>
             <main>
-                <Form onSubmit={context.login} showAlert={showAlert}/>
+                <Form onSubmit={context.register} showAlert={showAlert}/>
             </main>
         </div>
     );
 };
 
-export default Login;
+export default Register;

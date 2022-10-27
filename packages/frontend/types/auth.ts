@@ -1,14 +1,23 @@
 import {FormEvent} from 'react';
-import {authResponse} from '../../common/auth/auth';
+import {authResponse, registerResponse} from '../../common/auth/auth';
 
-export type userLogin = {
+export interface userLogin  {
     login: string
     password: string
 }
 
-export type loginHandle = (e: FormEvent<HTMLFormElement>, user: userLogin) => Promise<authResponse>
+export interface userRegister  {
+    login: string
+    email: string
+    password: string
+    rePassword: string
+    checkbox: boolean
+}
 
-export interface formProps {
-    onSubmit: loginHandle
-    showAlert(msg: string, color: string): void
+export type loginHandle = (e: FormEvent<HTMLFormElement>, user: userLogin) => Promise<authResponse>
+export type registerHandle = (e: FormEvent<HTMLFormElement>, user: userRegister) => Promise<registerResponse>
+
+export interface formProps<T> {
+    onSubmit: T
+    showAlert(msg: string[], color: string): void
 }

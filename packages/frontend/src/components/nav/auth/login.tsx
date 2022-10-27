@@ -1,7 +1,7 @@
 import {NavLink} from 'react-router-dom';
 import {useContext} from 'react';
 import {UserContext} from '../../../contexts/userProvider';
-import {userContext} from '../../../../types/user';
+import {userContext} from '../../../../types/userContext';
 import {MouseEvent} from 'react';
 
 const NavLogin= () => {

@@ -2,7 +2,7 @@ import {useState} from 'react';
 
 const useAlert = () => {
     const [isAlert, setIsAlert] = useState(false);
-    const [alertMsg, setAlertMsg] = useState('');
+    const [alertMsg, setAlertMsg] = useState<string[]>([]);
     const [alertColor, setAlertColor] = useState('#a0a8a2');
 
     return{
@@ -14,7 +14,7 @@ const useAlert = () => {
         hideAlert() {
             setIsAlert(false);
         },
-        showAlert(msg: string, color: string) {
+        showAlert(msg: string[], color: string) {
             setIsAlert(true);
             setAlertMsg(msg);
             setAlertColor(color);

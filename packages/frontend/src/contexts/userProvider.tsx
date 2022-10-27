@@ -1,5 +1,5 @@
 import {createContext, useEffect} from 'react';
-import {userContext} from '../../types/user';
+import {userContext} from '../../types/userContext';
 import useUser from '../hooks/useUser';
 import {ReactNode} from 'react';
 import {useLoaderData} from 'react-router-dom';
@@ -10,7 +10,7 @@ export const UserContext = createContext<userContext | null>(null);
 type childrenProp = { children: ReactNode }
 
 const UserProvider = ({children}: childrenProp) => {
-    const {user, login, resume, logout} = useUser();
+    const {user, login, resume, logout, register} = useUser();
     const data = useLoaderData() as user;
 
     useEffect(()=>{
@@ -18,7 +18,7 @@ const UserProvider = ({children}: childrenProp) => {
     },[]);
 
     return(
-        <UserContext.Provider value={{user, login, logout}}>
+        <UserContext.Provider value={{user, login, logout, register}}>
             {children}
         </UserContext.Provider>
     );

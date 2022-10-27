@@ -5,3 +5,8 @@ export type authResponse = {
     success: boolean
     msg: string
 }
+
+export type registerResponse = {
+    success: boolean
+    errors: string[]
+}

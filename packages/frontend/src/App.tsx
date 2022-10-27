@@ -7,8 +7,8 @@ import threadsLoader from './loaders/home.loader';
 import './public.scss';
 import threadLoader from './loaders/thread.loader';
 import Auth from './pages/auth/auth';
-import Login from './pages/auth/login';
-import Register from './pages/auth/register';
+import Login from './pages/auth/login/login';
+import Register from './pages/auth/register/register';
 import sessionLoader from './loaders/session.loader';
 import profileLoader from './loaders/profile.lodader';
 

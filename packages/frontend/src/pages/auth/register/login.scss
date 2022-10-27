@@ -1,0 +1,24 @@
+.auth-form__check-box-container{
+  display: flex;
+  align-items: center;
+}
+
+.auth-form__check-box{
+  transform: translateY(55%);
+  margin-right: .5rem;
+  accent-color: #6a9eff;
+}
+
+.auth-form__check-box-label{
+
+}
+
+.auth-form__check-box-label a{
+  color: #6a9eff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-form__submit{
+  margin-top: .5rem;
+}

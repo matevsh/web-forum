@@ -4,7 +4,7 @@ import NavLogin from './auth/login';
 import './nav.scss';
 import {useContext} from 'react';
 import {UserContext} from '../../contexts/userProvider';
-import {userContext} from '../../../types/user';
+import {userContext} from '../../../types/userContext';
 
 const Nav = () => {
     const userContext = useContext<userContext | null>(UserContext);
