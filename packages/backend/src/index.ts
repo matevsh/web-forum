@@ -29,5 +29,6 @@ app.get('*', error404);
 
 const {PORT} = process.env;
 app.listen(PORT, () => {
-    console.log(`App running on http://localhost:${PORT}`);
+    const DATE = new Date().toLocaleTimeString();
+    console.log(`${DATE} | App running on http://localhost:${PORT}`);
 });
