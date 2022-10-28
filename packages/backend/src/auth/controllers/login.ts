@@ -1,23 +1,26 @@
 import {Request, Response} from 'express';
-import users from '../mock.data';
+import {prisma} from '../../shared/prisma';
+import {compare} from 'bcrypt';
 
-const findUser = (login: string) => {
-    const userIndex = users.map(x => x.login).indexOf(login);
-    if(userIndex === -1) throw new Error('Invalid login');
-    return users[userIndex];
-};
-
-const loginUser = (req: Request, res: Response) => {
+const loginUser = async (req: Request, res: Response) => {
     const {login, password} = req.body;
 
     try{
-        const user = findUser(login);
+        const user = await prisma.user.findUnique({
+            where: {login}
+        });
 
-        if(user.password !== password) throw new Error();
+        if(!user) throw new Error();
+
+        const boolCompare = await compare(password, user.passwordHash);
+        if(!boolCompare) throw new Error();
 
         const loggedUser = {
             id: user.id,
-            login: user.login
+            login: user.login,
+            email: user.email,
+            idAvatar: user.idAvatar,
+            created: user.created
         };
 
         req.session.user = loggedUser;

@@ -26,6 +26,9 @@ const useUser = () => {
             const response = await postAuth<authResponse>(`${AUTH_URL}/login`, user);
             setUser(response.user);
 
+            console.log(response);
+            console.log(typeof response.user.created);
+            
             return response;
         },
         register: async (e: FormEvent<HTMLFormElement>,user: userRegister) => {
