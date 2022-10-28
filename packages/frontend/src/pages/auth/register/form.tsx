@@ -36,6 +36,7 @@ const Form = ({onSubmit, showAlert}: formProps<registerHandle>) => {
                 UItext='E-mail'
                 value={email}
                 setValue={setEmail}
+                type='email'
             />
             <AuthInput
                 name='password'

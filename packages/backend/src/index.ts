@@ -5,8 +5,10 @@ import cors from 'cors';
 import error404 from './shared/error/404';
 import cookieParser from 'cookie-parser';
 import sessions from 'express-session';
+import {prisma} from './shared/prisma';
 
 dotenv.config();
+prisma.$connect();
 
 const app = express();
 app.use(cors({ origin: 'http://localhost:5173', credentials:true }));

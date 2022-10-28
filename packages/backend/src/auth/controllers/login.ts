@@ -13,7 +13,7 @@ const loginUser = (req: Request, res: Response) => {
     try{
         const user = findUser(login);
 
-        if(user.password !== password) throw new Error('Invalid password');
+        if(user.password !== password) throw new Error();
 
         const loggedUser = {
             id: user.id,
@@ -27,10 +27,10 @@ const loginUser = (req: Request, res: Response) => {
             msg: 'Zostałeś pomyślnie zalogowany'
         });
     } catch (e) {
-        res.status(400).json({
+        res.status(200).json({
             user: null,
             success: false,
-            msg: e
+            msg: 'Niepoprawne dane logowania'
         });
     }
 };

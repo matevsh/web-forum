@@ -15,7 +15,7 @@ model User {
   login        String    @unique
   email        String    @unique
   passwordHash String    @map("password_hash")
-  idAvatar     Int       @map("id_avatar")
+  idAvatar     Int       @default(0) @map("id_avatar")
   Thread       Thread[]
   Comment      Comment[]
 
