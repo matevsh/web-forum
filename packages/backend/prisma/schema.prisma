@@ -16,6 +16,7 @@ model User {
   email        String    @unique
   passwordHash String    @map("password_hash")
   idAvatar     Int       @default(0) @map("id_avatar")
+  created      DateTime  @default(now())
   Thread       Thread[]
   Comment      Comment[]
 
