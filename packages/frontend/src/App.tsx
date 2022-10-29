@@ -11,6 +11,7 @@ import Login from './pages/auth/login/login';
 import Register from './pages/auth/register/register';
 import sessionLoader from './loaders/session.loader';
 import profileLoader from './loaders/profile.lodader';
+import AddThread from './pages/add-thread/addThread';
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
                 path: 'profile/:profileId',
                 element: <Profile />,
                 loader: profileLoader
+            },
+            {
+                path: 'thread/add',
+                element: <AddThread />,
             },
             {
                 path: 'thread/:threadId',

@@ -3,6 +3,12 @@ export type threadProps = {
     views: number
 }
 
+export type threadErrors = {
+    title?: string
+    desc?: string
+}
+
+
 export type thread = {
     id: number
     title: string

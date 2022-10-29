@@ -1,10 +1,21 @@
 import axios from 'axios';
 import {userLogin, userRegister} from '../../types/auth';
-import {authResponse, registerResponse} from '../../../common/auth/auth';
+import {authResponse, response} from '../../../types/auth';
 import {FormEvent, useState} from 'react';
-import {user} from '../../../common/user/user';
+import {user} from '../../../types/user';
 
 const AUTH_URL = 'http://localhost:3000/api/auth';
+
+const stringArrayFromErrors = (e: unknown) => {
+    const errors: string[] = [];
+
+    if(Array.isArray(e)){
+        e.forEach(x => {
+            if(x instanceof Error) errors.push(x.message);
+        });
+    }
+    return errors;
+};
 
 const useUser = () => {
     const [user, setUser] = useState<user | null>(null);
@@ -23,13 +34,17 @@ const useUser = () => {
         login: async (e:FormEvent<HTMLFormElement>,user: userLogin) => {
             e.preventDefault();
 
-            const response = await postAuth<authResponse>(`${AUTH_URL}/login`, user);
-            setUser(response.user);
-
-            console.log(response);
-            console.log(typeof response.user.created);
-            
-            return response;
+            try{
+                const response = await postAuth<authResponse>(`${AUTH_URL}/login`, user);
+                setUser(response.user);
+                return response;
+            }catch (e){
+                return {
+                    user: null,
+                    success: false,
+                    msg: stringArrayFromErrors(e)
+                };
+            }
         },
         register: async (e: FormEvent<HTMLFormElement>,user: userRegister) => {
             e.preventDefault();
@@ -50,18 +65,13 @@ const useUser = () => {
 
                 if(errors.length) throw errors;
 
-                return await postAuth<registerResponse>(`${AUTH_URL}/register`, user) ;
+                return await postAuth<response>(`${AUTH_URL}/register`, user) ;
             }catch (e){
-                const errors: string[] = [];
-
-                if(Array.isArray(e)){
-                    e.forEach(x => {
-                        if(x instanceof Error) errors.push(x.message);
-                    });
-                }
+                console.log(stringArrayFromErrors(e));
+                
                 return {
                     success: false,
-                    errors
+                    errors: stringArrayFromErrors(e)
                 };
             }
         },

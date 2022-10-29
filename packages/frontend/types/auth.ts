@@ -1,5 +1,5 @@
 import {FormEvent} from 'react';
-import {authResponse, registerResponse} from '../../common/auth/auth';
+import {authResponse, response} from '../../types/auth';
 
 export interface userLogin  {
     login: string
@@ -15,7 +15,7 @@ export interface userRegister  {
 }
 
 export type loginHandle = (e: FormEvent<HTMLFormElement>, user: userLogin) => Promise<authResponse>
-export type registerHandle = (e: FormEvent<HTMLFormElement>, user: userRegister) => Promise<registerResponse>
+export type registerHandle = (e: FormEvent<HTMLFormElement>, user: userRegister) => Promise<response>
 
 export interface formProps<T> {
     onSubmit: T

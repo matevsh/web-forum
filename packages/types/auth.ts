@@ -1,12 +1,12 @@
-import {user} from '../user/user';
+import {user} from './user';
 
 export type authResponse = {
     user: user
     success: boolean
-    msg: string
+    msg: string[]
 }
 
-export type registerResponse = {
+export type response = {
     success: boolean
     errors: string[]
 }

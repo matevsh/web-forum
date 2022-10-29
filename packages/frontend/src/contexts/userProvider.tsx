@@ -3,7 +3,7 @@ import {userContext} from '../../types/userContext';
 import useUser from '../hooks/useUser';
 import {ReactNode} from 'react';
 import {useLoaderData} from 'react-router-dom';
-import {user} from '../../../common/user/user';
+import {user} from '../../../types/user';
 
 export const UserContext = createContext<userContext | null>(null);
 

@@ -7,6 +7,8 @@ type alertProps = {
 }
 
 const Alert = ({color, msg, hideAlert}: alertProps) => {
+    console.log(msg);
+    console.log(Array.isArray(msg));
 
     return(
         <div className='auth-alert' style={{backgroundColor: color}}>
