@@ -1,5 +1,5 @@
 import {FormEvent} from 'react';
-import {authResponse, response} from '../../types/auth';
+import {authResponse, response} from '../../common/types/auth';
 
 export interface userLogin  {
     login: string

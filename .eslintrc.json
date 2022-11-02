@@ -37,6 +37,14 @@
             "error",
             "always"
         ],
-        "react/react-in-jsx-scope": 0
+        "react/react-in-jsx-scope": 0,
+        "@typescript-eslint/no-unused-vars": [
+            "warn", // or "error"
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_",
+                "caughtErrorsIgnorePattern": "^_"
+            }
+        ]
     }
 }

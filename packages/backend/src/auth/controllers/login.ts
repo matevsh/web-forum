@@ -33,7 +33,7 @@ const loginUser = async (req: Request, res: Response) => {
         res.status(200).json({
             user: null,
             success: false,
-            msg: 'Niepoprawne dane logowania'
+            msg: ['Niepoprawne dane logowania']
         });
     }
 };

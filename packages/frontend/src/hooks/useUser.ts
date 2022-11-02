@@ -1,8 +1,8 @@
 import axios from 'axios';
 import {userLogin, userRegister} from '../../types/auth';
-import {authResponse, response} from '../../../types/auth';
+import {authResponse, response} from '../../../common/types/auth';
 import {FormEvent, useState} from 'react';
-import {user} from '../../../types/user';
+import {user} from '../../../common/types/user';
 
 const AUTH_URL = 'http://localhost:3000/api/auth';
 
@@ -65,7 +65,7 @@ const useUser = () => {
 
                 if(errors.length) throw errors;
 
-                return await postAuth<response>(`${AUTH_URL}/register`, user) ;
+                return await postAuth<response<string[]>>(`${AUTH_URL}/register`, user) ;
             }catch (e){
                 console.log(stringArrayFromErrors(e));
                 

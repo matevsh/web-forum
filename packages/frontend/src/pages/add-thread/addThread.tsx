@@ -1,12 +1,40 @@
 import './addThread.scss';
 import {FormEvent, useState} from 'react';
 import useThread from '../../hooks/useThread';
-import {threadErrors} from '../../../types/thread';
+import {threadErrors} from '../../../../common/types/errors';
+import {useNavigate} from 'react-router-dom';
+import {ValidationError} from 'yup';
+
+const isValidationError = (x: any): x is ValidationError => {
+    if(!(typeof x === 'object') && Array.isArray(x)) return false;
+    if(!Object.hasOwn(x, 'message') && !(typeof x.message === 'string')) return false;
+    if(!Object.hasOwn(x, 'path') && !(typeof x.path === 'string')) return false;
+    return Array.isArray(x.inner);
+};
+
+const formatErrors = (err: ValidationError) => {
+    console.log('formatErrors: ',err);
+
+    const errors: Record<string, string> = {};
+
+    if(!err.path && Array.isArray(err.inner)){
+        err.inner.forEach((er: ValidationError) => {
+            if(!er.path) return;
+            errors[er.path] = er.message;
+        });
+    } else if(err.path){
+        errors[err.path] = err.message;
+    }
+    console.log(errors);
+    return errors;
+};
 
 const AddThread = () => {
     const [errors, setErrors] = useState<threadErrors | null>(null);
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
+
+    const redirect = useNavigate();
 
     const {createThread} = useThread();
 
@@ -14,11 +42,15 @@ const AddThread = () => {
         e.preventDefault();
 
         const response = await createThread({title, desc});
-        if(!response.success) setErrors(response.errors);
+        console.log('addThread component after response:', response);
 
-        console.log(response);
+        if(response?.success) redirect('/');
+        else {
+            if(isValidationError(response.errors)){
+                setErrors(formatErrors(response.errors));
+            }
+        }
     };
-
     return (
         <div className="main-content">
             <form action="#" className='thread-add-form' onSubmit={handleThread}>
@@ -27,7 +59,7 @@ const AddThread = () => {
                     value={title}
                     onChange={(e) => {
                         if(errors?.title) {
-                            const {title, ...x} = errors;
+                            const {title: _title, ...x} = errors;
                             setErrors(x);
                         }
                         setTitle(e.target.value);
@@ -35,7 +67,6 @@ const AddThread = () => {
                     type="text"
                     name='title'
                     className={`thread-input${errors?.title ? ' thread-input-error' : ''}`}
-                    required={true}
                 />
                 {errors?.title ? <p className='thread-error-label'>{errors.title}</p> : null}
                 <label htmlFor="desc" className='thread-label'>Opis</label>
@@ -43,7 +74,7 @@ const AddThread = () => {
                     value={desc}
                     onChange={(e) => {
                         if(errors?.desc) {
-                            const {desc, ...x} = errors;
+                            const {desc: _desc, ...x} = errors;
                             setErrors(x);
                         }
                         setDesc(e.target.value);

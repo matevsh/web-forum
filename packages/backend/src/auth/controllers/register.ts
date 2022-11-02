@@ -29,17 +29,9 @@ const register = async (req: Request, res: Response) => {
             errors: []
         });
     }catch (e) {
-        const errors: string[] = [];
-
-        if(Array.isArray(e)){
-            e.forEach(x => {
-                if(x instanceof Error) errors.push(x.message);
-            });
-        }
-
         res.status(200).json({
             success: false,
-            errors
+            errors: e
         });
     }
 

@@ -1,5 +1,5 @@
 import {useLoaderData} from 'react-router-dom';
-import {user} from '../../../../types/user';
+import {user} from '../../../../common/types/user';
 
 type profileLoaderData = {
     error: boolean

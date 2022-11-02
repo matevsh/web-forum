@@ -30,7 +30,7 @@ model Thread {
   title     String
   desc      String
   published DateTime  @default(now())
-  views     Int
+  views     Int       @default(0)
   Comment   Comment[]
 
   @@map("threads")

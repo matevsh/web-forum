@@ -6,7 +6,7 @@ export type authResponse = {
     msg: string[]
 }
 
-export type response = {
+export type response<T> = {
     success: boolean
-    errors: string[]
+    errors: T
 }

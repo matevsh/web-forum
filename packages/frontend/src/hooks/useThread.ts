@@ -1,41 +1,39 @@
-import {threadInput} from '../../../types/thread';
-import {threadErrors} from '../../types/thread';
+import {threadInput} from '../../../common/types/thread';
+import {threadErrors} from '../../../common/types/errors';
 import axios from 'axios';
-import {response} from '../../../types/auth';
+import {response} from '../../../common/types/auth';
+import {threadSchema} from '../../../common/yup/threadSchema';
 
 const API_URL = 'http://localhost:3000/api/thread';
 
 const useThread = () => {
 
     const postThread = async (url: string, thread: threadInput) => {
-        const {data} = await axios.post<response>(url, thread);
-        return data;
+        const response = await axios.post<response<threadErrors>>(url, thread, {withCredentials:true});
+        console.log(response);
+        return response.data;
     };
 
     return {
         createThread: async (thread: threadInput) => {
             try {
-                const errors: threadErrors = {};
+                await threadSchema.validate(thread, {abortEarly:false});
+                const xd =  await postThread(`${API_URL}/add`, thread);
+                console.log('useThread response:', xd);
 
-                if(thread.title.length < 10) {
-                    errors.title = 'Tytuł musi mieć przynajmniej 10 znaków';
-                }
-                if(thread.desc.length < 20) {
-                    errors.desc = 'Rozpisz się trochę bardziej ;)';
-                }
-
-                if(errors?.title || errors?.desc) throw errors;
-
-                return await postThread(`${API_URL}/add`, thread);
+                return xd;
+                // return{
+                //     success: true,
+                //     errors: []
+                // };
             }catch (e) {
+                console.dir(e);
                 return {
                     success: false,
-                    errors: e as threadErrors
+                    errors: e
                 };
             }
         }
-
-
     };
 };
 

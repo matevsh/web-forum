@@ -1,5 +1,5 @@
 import {loginHandle, registerHandle} from './auth';
-import {user} from '../../types/user';
+import {user} from '../../common/types/user';
 
 export interface userContext {
     user: user | null
