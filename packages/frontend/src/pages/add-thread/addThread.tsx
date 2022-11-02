@@ -6,9 +6,9 @@ import {useNavigate} from 'react-router-dom';
 import {ValidationError} from 'yup';
 
 const isValidationError = (x: any): x is ValidationError => {
-    if(!(typeof x === 'object') && Array.isArray(x)) return false;
-    if(!Object.hasOwn(x, 'message') && !(typeof x.message === 'string')) return false;
-    if(!Object.hasOwn(x, 'path') && !(typeof x.path === 'string')) return false;
+    if(typeof x === 'object' && Array.isArray(x)) return false;
+    if(!Object.hasOwn(x, 'message') && typeof x.message !== 'string') return false;
+    if(!Object.hasOwn(x, 'path') && typeof x.path !== 'string') return false;
     return Array.isArray(x.inner);
 };
 
