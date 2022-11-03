@@ -1,5 +1,6 @@
 import {useLoaderData} from 'react-router-dom';
 import {user} from '../../../../common/types/user';
+import './profile.scss';
 
 type profileLoaderData = {
     error: boolean
@@ -10,7 +11,7 @@ const Profile = () => {
     const {user} = useLoaderData() as profileLoaderData;
 
     return (
-        <main className='main-content'>
+        <main className='profile-content'>
             <h1>This is Profile page</h1>
             <p>{`UserID: ${user.id}, Login: ${user.login}`}</p>
         </main>

@@ -6,13 +6,20 @@ import Searchbar from './searchbar/searchbar';
 const Home = () => {
     const data = useLoaderData() as Array<thread>;
 
-    if(!data) return <h1>Data loading internal error</h1>;
+    if(typeof data === 'object' && !Array.isArray(data)) return <h1>Data loading internal error</h1>;
 
     return (
         <main className='main-content'>
             <Searchbar/>
-            {data?.map(({id, title, views} : thread) => (
-                <Thread key={id} id={id} title={title} views={views} />
+            {data?.map(({id, title, views, published, user} : thread) => (
+                <Thread
+                    key={id}
+                    id={id}
+                    title={title}
+                    views={views}
+                    published={published}
+                    user={user}
+                />
             ))}
         </main>
     );

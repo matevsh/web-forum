@@ -1,8 +1,12 @@
 import axios from 'axios';
 
 const sessionLoader = async () => {
-    const {data} = await axios.get('http://localhost:3000/api/auth', {withCredentials: true});
-    return(data);
+    try{
+        const {data} = await axios.get('http://localhost:3000/api/auth', {withCredentials: true});
+        return(data);
+    }catch{
+        return null;
+    }
 };
 
 export default sessionLoader;

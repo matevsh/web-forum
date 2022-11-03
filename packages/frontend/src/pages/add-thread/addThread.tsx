@@ -5,10 +5,13 @@ import {threadErrors} from '../../../../common/types/errors';
 import {useNavigate} from 'react-router-dom';
 import {ValidationError} from 'yup';
 
-const isValidationError = (x: any): x is ValidationError => {
-    if(typeof x === 'object' && Array.isArray(x)) return false;
-    if(!Object.hasOwn(x, 'message') && typeof x.message !== 'string') return false;
-    if(!Object.hasOwn(x, 'path') && typeof x.path !== 'string') return false;
+const isObject = (input: unknown): input is Record<string, unknown> => {
+    return typeof input === 'object' && input !== null && !Array.isArray(input);
+};
+
+const isValidationError = (x: unknown): x is ValidationError => {
+    if(!isObject(x)) return false;
+    if(!('message' in x) || !('path' in x) || !('inner' in x)) return false;
     return Array.isArray(x.inner);
 };
 

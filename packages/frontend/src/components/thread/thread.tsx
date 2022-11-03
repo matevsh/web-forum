@@ -1,18 +1,38 @@
-import {Link} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import {thread} from '../../../types/thread';
+import * as dayjs from 'dayjs';
 import './thread.scss';
+import imgUrl from './img.png';
 
-const Thread = ({title, views, id}: thread) => {
+const Thread = ({title, views, id, published, user}: thread) => {
+    const date = dayjs(published).format('DD/MM/YYYY HH:mm');
+
+    const redirect = useNavigate();
+
     return (
-        <Link to={`thread/${id}`} className='thread-card__link'>
-            <div className='thread-card__content'>
-                <div className='thread-card__info'>
-                    <p>20.10.2022 16:03</p>
-                    <p>views: {views}</p>
+        <div
+            className='thread-card__content'
+            onClick={() => {
+                redirect(`thread/${id}`);
+            }}>
+            <div className='thread-card__info'>
+                <p>{date}</p>
+                <div className='thread-card__info-views'>
+                    <img src={imgUrl} alt=""/>
+                    <p>{views}</p>
                 </div>
-                <h2>{title}</h2>
             </div>
-        </Link>
+
+            <h1 className='thread-card__title'>{title}</h1>
+            <div className="thread-card__user"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    redirect(`/profile/${user.id}`);
+                }}>
+                <img src={`http://localhost:3000/api/avatar/${user.idAvatar}`} alt='user avatar'/>
+                <p>{user.login}</p>
+            </div>
+        </div>
     );
 };
 

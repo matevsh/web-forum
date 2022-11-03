@@ -8,7 +8,8 @@ const threadsLoader = async () => {
         const response: AxiosResponse<threads> = await axios.get(URL);
         return response.data;
     } catch (e) {
-        console.log(e);
+        console.log('home.loader.ts',e);
+        return e;
     }
 };
 

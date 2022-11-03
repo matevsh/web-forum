@@ -1,18 +1,34 @@
-import data from '../mock.data';
+import {prisma} from '../../shared/prisma';
 import {Request, Response} from 'express';
 
-export const getThreads = (req: Request, res: Response) => {
-    res.status(200).json(data);
+export const getThreads = async (req: Request, res: Response) => {
+    const threads = await prisma.thread.findMany({
+        include: {
+            user: {
+                select:{
+                    id: true,
+                    idAvatar: true,
+                    login: true
+                }
+            }
+        },
+        orderBy: {
+            published: 'desc'
+        }
+    });
+    res.status(200).json(threads);
 };
 
-export const getThread = (req: Request, res: Response) => {
+export const getThread = async (req: Request, res: Response) => {
     const {threadId} = req.params;
 
     try{
-        const [wanted] = data.filter(t => t.id === +threadId);
-        if(!wanted) throw new Error('invalid thread Id');
+        const thread = await prisma.thread.findUnique({
+            where: {id: +threadId}
+        });
+        if(!thread) throw new Error('invalid thread Id');
 
-        res.status(200).json(wanted);
+        res.status(200).json(thread);
     } catch (e) {
         res.status(406).json({errCode: 406, msg: `Not Acceptable / ${e}`});
     }

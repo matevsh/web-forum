@@ -1,36 +1,63 @@
-.thread-card__link{
-    text-decoration: none;
-    color: black;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 .thread-card__content{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: #eeeeee;
-    box-shadow: 0 0 3px 3px #eeeeee;
     margin: 1rem 0;
-    padding: 2rem 1rem;
-    border-radius: .5rem;
-    min-height: 125px;
     cursor: pointer;
     position: relative;
     transition: .3s;
+    border-bottom: 1px solid #a4a4a4;
+    padding: 1rem;
+    gap: .5rem;
 
     &:hover {
         background: #dedede;
-        box-shadow: 0 0 3px 3px #dedede;
     }
 }
 
 .thread-card__info{
-    display: flex;
-    gap: 1rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: .5rem 1rem;
-    font-weight: bold;
     color: #6b6b6b;
+    font-family: 'Roboto Mono', monospace;
+    display: flex;
+    justify-content: space-between;
+
+    .thread-card__info-views{
+        display: flex;
+        align-items: center;
+
+        img{
+            max-height: 20px;
+            margin-right: .5rem;
+        }
+    }
+}
+.thread-card__title{
+    font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.thread-card__user{
+    display: flex;
+    align-items: center;
+    border-radius: .2rem;
+    padding: .3rem;
+    margin-left: -.3rem;
+
+    &:hover,
+    &:active{
+        background: #ffffff;
+    }
+
+    img{
+        height: 1.5rem;
+        margin-right: .3rem;
+    }
+
+    p{
+        font-weight: bold;
+    }
 }
