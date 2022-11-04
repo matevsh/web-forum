@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter} from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Root from './pages/root';
 import Home from './pages/home/home';
 import Profile from './pages/profile/profile';
@@ -30,17 +30,18 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <Login />
+                        element: <Login />,
                     },
                     {
                         path: 'register',
-                        element: <Register />
-                    }]
+                        element: <Register />,
+                    },
+                ],
             },
             {
                 path: 'profile/:profileId',
                 element: <Profile />,
-                loader: profileLoader
+                loader: profileLoader,
             },
             {
                 path: 'thread/add',
@@ -49,10 +50,10 @@ const router = createBrowserRouter([
             {
                 path: 'thread/:threadId',
                 element: <Thread />,
-                loader: threadLoader
-            }
-        ]
-    }
+                loader: threadLoader,
+            },
+        ],
+    },
 ]);
 
 const App = () => {

@@ -1,15 +1,17 @@
 import NavLogout from './auth/logout';
 import NavLogin from './auth/login';
 import './nav.scss';
-import {useContext} from 'react';
-import {UserContext} from '../../contexts/userProvider';
-import {userContext} from '../../../types/userContext';
+import { UserContext } from '../../contexts/userProvider';
+import scss from './nav.module.scss';
+import { useContext } from 'react';
+import ThemeSwitch from './theme-switch/theme-switch';
 
 const Nav = () => {
-    const userContext = useContext<userContext | null>(UserContext);
+    const userContext = useContext(UserContext);
 
     return (
-        <nav className='main-nav'>
+        <nav className={scss.nav}>
+            <ThemeSwitch />
             {userContext?.user ? <NavLogin /> : <NavLogout />}
         </nav>
     );

@@ -1,12 +1,15 @@
 import Header from '../components/header/header';
-import {Outlet} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import UserContextProvider from '../contexts/userProvider';
+import ThemeProvider from '../contexts/themeProvider';
 
 const Root = () => {
     return (
         <UserContextProvider>
-            <Header />
-            <Outlet />
+            <ThemeProvider>
+                <Header />
+                <Outlet />
+            </ThemeProvider>
         </UserContextProvider>
     );
 };

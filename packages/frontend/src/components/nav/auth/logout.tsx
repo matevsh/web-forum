@@ -1,9 +1,7 @@
 import {NavLink} from 'react-router-dom';
-import {useState} from 'react';
+import Sidebar from '../sidebar/sidebar';
 
 const NavLogout = () => {
-    const [sidebar, setSidebar] = useState(false);
-
     return (
         <>
             <div className='nav-link__container'>
@@ -14,10 +12,9 @@ const NavLogout = () => {
                     logowanie
                 </NavLink>
             </div>
-            <div className="hamburger-menu" onClick={() => setSidebar(!sidebar)}/>
-            <div className={`hamburger-sidebar${sidebar ? ' hamburger-sidebar--active' : null}`}>
-                this is sidebar
-            </div>
+            <Sidebar>
+                <p>This is logout sidebar</p>
+            </Sidebar>
         </>
     );
 };
