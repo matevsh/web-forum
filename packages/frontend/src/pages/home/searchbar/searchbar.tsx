@@ -1,9 +1,17 @@
+import scss from './searchbar.module.scss';
+
 const Searchbar = () => {
-    return(
-        <>
-            <input type="text" />
-            <input type="button" value="Dodaj post"/>
-        </>
+    return (
+        <div className={scss.searchbar}>
+            <input
+                type="text"
+                placeholder="Wyszukaj..."
+                className={scss.input}
+            />
+            <div className={scss.submit}>
+                <i className="fa-solid fa-magnifying-glass fa-xl"></i>
+            </div>
+        </div>
     );
 };
 

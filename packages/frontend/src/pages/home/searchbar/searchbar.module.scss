@@ -1,0 +1,16 @@
+.searchbar {
+    padding: 1rem 1.3rem 0 1.3rem;
+    display: flex;
+}
+
+.input {
+    flex: 1 1 auto;
+    padding-left: 1rem;
+}
+
+.submit {
+    background: #d5d5d5;
+    padding: 0.5rem 0.3rem;
+    margin-left: 0.3rem;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
