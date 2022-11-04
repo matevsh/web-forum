@@ -14,15 +14,20 @@ const NavLogin= () => {
 
     return (
         <>
-            <a className='nav-link' href='#' onClick={(handleLogout)}>
-                wyloguj
-            </a>
-            <NavLink className='nav-link' to={'thread/add'}>
-                zapostuj
-            </NavLink>
-            <div className='nav-profile'>
-                <img src={`http://localhost:3000/api/avatar/${userContext?.user?.idAvatar}`} alt=""/>
-                <p>{userContext?.user?.login}</p>
+            <div className='nav-link__container'>
+                <NavLink end={true} className='nav-link' to={'/'}>
+                    home
+                </NavLink>
+                <a className='nav-link' href='#' onClick={(handleLogout)}>
+                    wyloguj
+                </a>
+                <NavLink className='nav-link' to={'thread/add'}>
+                    zapostuj
+                </NavLink>
+                <div className='nav-profile'>
+                    <img src={`http://localhost:3000/api/avatar/${userContext?.user?.idAvatar}`} alt=""/>
+                    <p>{userContext?.user?.login}</p>
+                </div>
             </div>
         </>
     );

@@ -1,12 +1,12 @@
 import {useLoaderData} from 'react-router-dom';
-import {thread} from '../../../types/thread';
+import {threadLoaderData} from '../../../types/threadLoaderData';
 
 const mainStyles = {
     paddingTop: '2rem',
 };
 
 const Thread = () => {
-    const data = useLoaderData() as thread;
+    const data = useLoaderData() as threadLoaderData;
 
     return (
         <>

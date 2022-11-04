@@ -1,22 +1,26 @@
-import users from '../../auth/mock.data';
+import {prisma} from '../../shared/prisma';
 import {Request, Response} from 'express';
 
 export const getUser = async (req: Request, res: Response) => {
     const {userId} = req.params;
 
     try{
-        const [user] = users.filter(x => x.id === +userId);
-        // if(!user) throw new Error('invalid profile Id');
-        res.status(200).json({
-            error: false,
-            user: {
-                id: user.id,
-                login: user.login
+        const user = await prisma.user.findUnique({
+            where:{
+                id: +userId
+            },
+            include: {
+                Thread: true,
             }
+        });
+
+        res.status(200).json({
+            success: true,
+            user
         });
     }catch (e) {
         res.status(400).json({
-            error: true,
+            success: false,
             msg: e
         });
     }

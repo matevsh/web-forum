@@ -1,10 +1,10 @@
 import { useNavigate} from 'react-router-dom';
-import {thread} from '../../../types/thread';
+import {threadLoaderData} from '../../../types/threadLoaderData';
 import * as dayjs from 'dayjs';
 import './thread.scss';
 import imgUrl from './img.png';
 
-const Thread = ({title, views, id, published, user}: thread) => {
+const Thread = ({title, views, id, published, user}: threadLoaderData) => {
     const date = dayjs(published).format('DD/MM/YYYY HH:mm');
 
     const redirect = useNavigate();

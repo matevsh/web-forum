@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from 'axios';
-import {threads} from '../../types/thread';
+import {threads} from '../../types/threadLoaderData';
 
 const URL = 'http://localhost:3000/api/data';
 

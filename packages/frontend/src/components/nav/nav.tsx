@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import NavLogout from './auth/logout';
 import NavLogin from './auth/login';
 import './nav.scss';
@@ -11,9 +10,6 @@ const Nav = () => {
 
     return (
         <nav className='main-nav'>
-            <NavLink end={true} className='nav-link' to={'/'}>
-                home
-            </NavLink>
             {userContext?.user ? <NavLogin /> : <NavLogout />}
         </nav>
     );

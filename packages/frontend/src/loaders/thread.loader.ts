@@ -1,11 +1,11 @@
 import axios, {AxiosResponse} from 'axios';
-import {thread} from '../../types/thread';
+import {threadLoaderData} from '../../types/threadLoaderData';
 import {LoaderFunctionArgs} from 'react-router-dom';
 
 const URL = 'http://localhost:3000/api/data/thread';
 
 const threadLoader = async ({params}: LoaderFunctionArgs) => {
-    const response: AxiosResponse<thread> = await axios.get(`${URL}/${params.threadId}`);
+    const response: AxiosResponse<threadLoaderData> = await axios.get(`${URL}/${params.threadId}`);
     return response.data;
 };
 

@@ -3,6 +3,9 @@ export type thread = {
     title: string
     views: number
     published: string
+}
+
+export interface threadLoaderData extends thread{
     user: {
         id: number
         idAvatar: number
@@ -10,4 +13,4 @@ export type thread = {
     }
 }
 
-export type threads = Array<thread>
+export type threads = Array<threadLoaderData>
