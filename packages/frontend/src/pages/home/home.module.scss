@@ -1,0 +1,9 @@
+@import '../../variables';
+
+.content {
+    background: $primary-light;
+
+    &.dark {
+        background: $primary-dark;
+    }
+}

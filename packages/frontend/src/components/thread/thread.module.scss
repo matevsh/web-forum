@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import '../../variables';
+
+.card {
+    position: relative;
+    display: flex;
+    padding: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    background: lighten($primary-light, 10%);
+    margin: 0.5rem;
+    gap: 0.5rem;
+
+    &.dark {
+        background: lighten($primary-dark, 5%);
+    }
+}
+
+.sideAvatar {
+    height: 75px;
+
+    img {
+        height: 100%;
+        border-radius: 50%;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    overflow: hidden;
+
+    h1 {
+        font-size: 1.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-family: 'Montserrat', sans-serif;
+
+        &.dark {
+            color: white;
+        }
+    }
+}
+
+.postCreator {
+    color: black;
+
+    span {
+        font-weight: bold;
+        color: #5467ff;
+    }
+
+    &.dark {
+        color: darken($primary-light, 30%);
+    }
+}
+
+.date {
+    position: absolute;
+    margin: 0.3rem;
+    color: lighten($primary-dark, 20%);
+    right: 0;
+    bottom: 0;
+
+    &.dark {
+        color: darken($primary-light, 30%);
+    }
+}

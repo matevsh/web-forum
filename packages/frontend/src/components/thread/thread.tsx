@@ -1,36 +1,46 @@
-import { useNavigate} from 'react-router-dom';
-import {threadLoaderData} from '../../../types/threadLoaderData';
+import { useNavigate } from 'react-router-dom';
+import { threadLoaderData } from '../../../types/threadLoaderData';
 import * as dayjs from 'dayjs';
-import './thread.scss';
-import imgUrl from './img.png';
+import scss from './thread.module.scss';
+import { useTheme } from '../../hooks/useTheme';
+import { MouseEvent } from 'react';
 
-const Thread = ({title, views, id, published, user}: threadLoaderData) => {
+const Thread = ({ title, id, published, user }: threadLoaderData) => {
     const date = dayjs(published).format('DD/MM/YYYY HH:mm');
+    const { darkTheme } = useTheme();
 
     const redirect = useNavigate();
 
+    const redirectToProfile = (e: MouseEvent) => {
+        e.stopPropagation();
+        redirect(`/profile/${user.id}`);
+    };
+
     return (
         <div
-            className='thread-card__content'
-            onClick={() => {
-                redirect(`thread/${id}`);
-            }}>
-            <div className='thread-card__info'>
-                <p>{date}</p>
-                <div className='thread-card__info-views'>
-                    <img src={imgUrl} alt=""/>
-                    <p>{views}</p>
-                </div>
+            className={`${scss.card} ${darkTheme ? scss.dark : ''}`}
+            onClick={() => redirect(`/thread/${id}`)}
+        >
+            <div className={scss.sideAvatar}>
+                <img
+                    src={`http://localhost:3000/api/avatar/${user.idAvatar}`}
+                    alt={`user avatar (nr ${user.idAvatar})`}
+                    onClick={redirectToProfile}
+                />
             </div>
-
-            <h1 className='thread-card__title'>{title}</h1>
-            <div className="thread-card__user"
-                onClick={(e) => {
-                    e.stopPropagation();
-                    redirect(`/profile/${user.id}`);
-                }}>
-                <img src={`http://localhost:3000/api/avatar/${user.idAvatar}`} alt='user avatar'/>
-                <p>{user.login}</p>
+            <div className={scss.content}>
+                <h1 className={darkTheme ? scss.dark : ''}>{title}</h1>
+                <p
+                    className={`${scss.postCreator} ${
+                        darkTheme ? scss.dark : ''
+                    }`}
+                >
+                    Dodane przez{' '}
+                    <span onClick={redirectToProfile}>{user.login}</span>
+                </p>
+                <p className={`${scss.date} ${darkTheme ? scss.dark : ''}`}>
+                    {date}
+                </p>
             </div>
         </div>
     );
