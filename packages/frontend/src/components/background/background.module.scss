@@ -1,6 +1,7 @@
 @import '../../variables';
 
-.content {
+.theme {
+    min-height: 100vh;
     background: $primary-light;
     transition: background-color 0.5s;
 

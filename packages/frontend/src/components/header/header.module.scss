@@ -1,0 +1,51 @@
+//@media (min-width: 480px) {
+//  width: 80%;
+//}
+//
+//@media (min-width: 1200px) {
+//  width: 60%;
+//}
+@import '../../variables';
+
+.header {
+    display: flex;
+    justify-content: center;
+    background: lighten($primary-light, 30%);
+    transition: background-color 0.5s;
+
+    &.dark {
+        background: lighten($primary-dark, 10%);
+
+        .content {
+            color: white;
+
+            h1 {
+                color: white;
+            }
+        }
+    }
+
+    .content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1rem;
+
+        @media (min-width: 480px) {
+            width: 80%;
+            padding: 0;
+        }
+
+        @media (min-width: 1200px) {
+            width: 60%;
+        }
+
+        h1 {
+            color: black;
+        }
+    }
+}
+
+.link {
+    text-decoration: none;
+}

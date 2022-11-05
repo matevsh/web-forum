@@ -1,79 +1,78 @@
 .hamburger {
-  width: 25px;
-  height: 4px;
-  background: black;
-  position: relative;
-  margin-right: 1rem;
-
-  &::before,
-  &::after {
-    background: black;
-    position: absolute;
-    content: '';
     width: 25px;
     height: 4px;
-  }
+    background: black;
+    position: relative;
 
-  &::before {
-    top: -8px;
-  }
+    &::before,
+    &::after {
+        background: black;
+        position: absolute;
+        content: '';
+        width: 25px;
+        height: 4px;
+    }
 
-  &::after {
-    top: 8px;
-  }
+    &::before {
+        top: -8px;
+    }
 
-  @media (min-width: 40rem) {
-    display: none;
-  }
+    &::after {
+        top: 8px;
+    }
+
+    @media (min-width: 40rem) {
+        display: none;
+    }
 }
 
 .background {
-  background: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  opacity: 0;
-  visibility: hidden;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
 
-  &Active {
-    visibility: visible;
-    animation: fadeInFromNone 0.5s forwards;
-  }
+    &Active {
+        visibility: visible;
+        animation: fadeInFromNone 0.5s forwards;
+    }
 }
 
 @keyframes fadeInFromNone {
-  0% {
-    display: none;
-    opacity: 0;
-  }
+    0% {
+        display: none;
+        opacity: 0;
+    }
 
-  1% {
-    display: block;
-    opacity: 0;
-  }
+    1% {
+        display: block;
+        opacity: 0;
+    }
 
-  100% {
-    display: block;
-    opacity: 1;
-  }
+    100% {
+        display: block;
+        opacity: 1;
+    }
 }
 
 .sidebar {
-  transition: transform 0.4s;
-  z-index: 1;
-  position: fixed;
-  width: 80%;
-  max-width: 300px;
-  top: 0;
-  right: 0;
-  height: 100%;
-  background: #6b6b6b;
-  transform: translateX(100vw);
+    transition: transform 0.4s;
+    z-index: 1;
+    position: fixed;
+    width: 80%;
+    max-width: 300px;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: #6b6b6b;
+    transform: translateX(100vw);
 
-  &Active {
-    transform: translateX(0);
-  }
+    &Active {
+        transform: translateX(0);
+    }
 }
